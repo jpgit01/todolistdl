@@ -1,14 +1,13 @@
-let tareaInput = document.querySelector("#input_tarea")
-let btnAgregaTarea = document.querySelector("#btn_agrega_tarea")
-let listaTareas = document.querySelector("#lista_tareas")
-let datosTareas = document.querySelector("#datos")
+let tareaInput = document.querySelector("#input_tarea");
+let btnAgregaTarea = document.querySelector("#btn_agrega_tarea");
+let listaTareas = document.querySelector("#lista_tareas");
+let datosTareas = document.querySelector("#datos");
 
-const tareas = []
+const tareas = [];
 
-
-function renderTareas(){
-    let html = ""
-    headLista = `<table class='table table-responsive'>
+function renderTareas() {
+  let html = "";
+  headLista = `<table class='table table-responsive'>
     <tr>
         <th>
             Eliminar
@@ -25,16 +24,34 @@ function renderTareas(){
     </tr>
         `;
 
-footerLista = `</table>`;
+  footerLista = `</table>`;
 
-    for(tarea of tareas){
-        html += `<tr>
+  for (tarea of tareas) {
+    if (tarea.estado == false) {
+      html += `<tr>
+            <td>
+                <button class='btn btn-danger' onclick="borrar(${tarea.id})"> eliminar</button>
+            </td>
+            <td>
+                <button class='btn btn-success' onclick="actualizaEstado(${tarea.id})">Realizada</button>
+                </td>
+            <td>
+                ${tarea.id}
+            </td>
+            <td>
+                ${tarea.nombre}
+            </td>
+        </tr>`;
+    } else {
+      html += `<tr>
         <td>
-            <button class='btn btn-danger' onclick="borrar(${tarea.id})"> eliminar</button>
+            <button class="btn btn-danger "onclick="borrar(${tarea.id})"> eliminar</button>
         </td>
         <td>
-            <button class='btn btn-success' onclick="actualizaEstado(${tarea.id})">Realizada</button>
-            </td>
+        <div class="alert alert-success" role="alert">
+        Tarea Realizada
+      </div>
+        </td>
         <td>
             ${tarea.id}
         </td>
@@ -43,26 +60,27 @@ footerLista = `</table>`;
         </td>
     </tr>`;
     }
-    listaTareas.innerHTML = headLista + html + footerLista
+  }
+  listaTareas.innerHTML = headLista + html + footerLista;
 }
 
-btnAgregaTarea.addEventListener("click",()=>{
-    const nuevaTarea = tareaInput.value
-    tareas.push({ id: Date.now(), nombre: nuevaTarea, estado: false });
-    tareaInput.value = ""
-    renderTareas()
-})
+btnAgregaTarea.addEventListener("click", () => {
+  const nuevaTarea = tareaInput.value;
+  tareas.push({ id: Date.now(), nombre: nuevaTarea, estado: false });
+  tareaInput.value = "";
+  renderTareas();
+});
 
 function borrar(id) {
-    const index = tareas.findIndex((ele) => ele.id == id);
-    tareas.splice(index, 1);
-    renderTareas();
-  }
-  
-  function actualizaEstado(id){
-    const index = tareas.findIndex((ele)=>ele.id == id);
-    tarea = tareas[index]
-    tarea.estado = true
-    renderTareas();
-    console.log(tareas)
-  }
+  const index = tareas.findIndex((ele) => ele.id == id);
+  tareas.splice(index, 1);
+  renderTareas();
+}
+
+function actualizaEstado(id) {
+  const index = tareas.findIndex((ele) => ele.id == id);
+  tarea = tareas[index];
+  tarea.estado = true;
+  renderTareas();
+  console.log(tareas);
+}
