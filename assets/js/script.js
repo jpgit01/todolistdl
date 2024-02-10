@@ -6,5 +6,6 @@ let datosTareas = document.querySelector("#datos")
 const tareas = []
 
 btnAgregaTarea.addEventListener("click",()=>{
-    console.log("tarea")
+    const nuevaTarea = tareaInput.value
+    tareas.push({ id: Date.now(), nombre: nuevaTarea, estado: false });
 })
