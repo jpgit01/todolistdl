@@ -26,6 +26,7 @@ function renderTareas(){
         `;
 
 footerLista = `</table>`;
+
     for(tarea of tareas){
         html += `<tr>
         <td>
@@ -51,3 +52,17 @@ btnAgregaTarea.addEventListener("click",()=>{
     tareaInput.value = ""
     renderTareas()
 })
+
+function borrar(id) {
+    const index = tareas.findIndex((ele) => ele.id == id);
+    tareas.splice(index, 1);
+    renderTareas();
+  }
+  
+  function actualizaEstado(id){
+    const index = tareas.findIndex((ele)=>ele.id == id);
+    tarea = tareas[index]
+    tarea.estado = true
+    renderTareas();
+    console.log(tareas)
+  }

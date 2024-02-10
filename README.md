@@ -1,7 +1,7 @@
 Proceso:
-1crear html
-2 crear variables para los input y seleccionables del html
-3crear funcion agregar lista
+1crear html ok
+2 crear variables para los input y seleccionables del html ok
+3crear funcion agregar lista ok
 4crear funcion borrar elemento
-5 crear funcion renderizar elemento
+5 crear funcion renderizar elemento ok
 6 crear funcion actualizar elementos
