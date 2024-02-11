@@ -13,14 +13,14 @@ let contador = 0; // el contador de las tareas realizadas
 //renderiza el estado de los elementos
 function renderTareas() {
   let html = "";
-  headLista = `<table class='table table-responsive'><tr><th> Eliminar</th><th>Realizada</th><th>ID</th><th>Nombre</th></tr>`;
-  footerLista = `</table>`;
+  headLista = `<div class ='table-responsive'><table class='table'><thead><tr><th scope="col"> Eliminar</th><th scope="col">Realizada</th><th scope="col">ID</th><th scope="col">Nombre</th></tr><thead><tbody>`;
+  footerLista = `</tbody></table></div>`;
 
   for (tarea of tareas) {
     if (tarea.estado == false) {
-      html += `<tr><td><button id="bot-rar" class='btn btn-danger btn-lg' onclick="borrar(${tarea.id})"> eliminar</button></td><td><button class='btn btn-success btn-lg'onclick="actualizaEstado(${tarea.id})">Realizada</button></td><td>${tarea.id}</td><td>${tarea.nombre}</td></tr>`;
+      html += `<tr><td scope="col"><button id="bot-rar" class='btn btn-danger btn-lg' onclick="borrar(${tarea.id})"> eliminar</button></td><td scope="col"><button class='btn btn-success btn-lg'onclick="actualizaEstado(${tarea.id})">Realizada</button></td><td scope="col">${tarea.id}</td><td scope="col">${tarea.nombre}</td></tr>`;
     } else {
-      html += `<tr><td><button id="bot-rar"  class="btn btn-danger btn-lg"onclick="borrar(${tarea.id})"> eliminar</button></td><td><div class="alert alert-success" role="alert">Tarea Realizada</div></td><td>${tarea.id}</td><td>${tarea.nombre}</td></tr>`;
+      html += `<tr><td scope="col"><button id="bot-rar"  class="btn btn-danger btn-lg"onclick="borrar(${tarea.id})"> eliminar</button></td><td scope="col"><div class="alert alert-success" role="alert">Tarea Realizada</div></td><td scope="col">${tarea.id}</td><td>${tarea.nombre}</td></tr>`;
     }
   }
 
