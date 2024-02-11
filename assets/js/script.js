@@ -1,11 +1,16 @@
-let tareaInput = document.querySelector("#input_tarea");
+
+
+let tareaInput = document.querySelector("#input_tarea");        //variables de reuso del dom
 let btnAgregaTarea = document.querySelector("#btn_agrega_tarea");
 let listaTareas = document.querySelector("#lista_tareas");
 let datosTareas = document.querySelector("#datos");
 
-const tareas = [{ id: 1, nombre: 'Estudiar', estado: false },{ id: 2, nombre: 'ejercicio', estado: false },{ id: 3, nombre: 'clase', estado: false }];
-let contador = 0;
+const tareas = [{ id: 1, nombre: 'Estudiar', estado: false },{ id: 2, nombre: 'ejercicio', estado: false },{ id: 3, nombre: 'clase', estado: false }]; // constante base para inicio de tareas
 
+let contador = 0; // el contador de las tareas realizadas
+
+
+//renderiza el estado de los elementos
 function renderTareas() {
   let html = "";
   headLista = `<table class='table table-responsive'><tr><th> Eliminar</th><th>Realizada</th><th>ID</th><th>Nombre</th></tr>`;
@@ -22,17 +27,21 @@ function renderTareas() {
   listaTareas.innerHTML = headLista + html + footerLista;
 }
 
+
+//agregamos las tareas
 btnAgregaTarea.addEventListener("click", () => {
   const nuevaTarea = tareaInput.value;
   tareas.push({ id: Date.now(), nombre: nuevaTarea, estado: false });
   tareaInput.value = "";
-  totalTareas = tareas.length;
+  totalTareas = tareas.length; //en cada accion como agregar una lista o borrar un elemento se actualiza el total de tareas y realizadas
   datosTareas.innerHTML = `
       <p>Total: ${totalTareas}</p>
       <p>Realizadas: ${contador}</p>`;
   renderTareas();
 });
 
+
+//funcion para borrar
 function borrar(id) {
   const index = tareas.findIndex((ele) => ele.id == id);
 
@@ -42,7 +51,7 @@ if(tareas[index].estado == true){
 
   tareas.splice(index, 1);
 
-  totalTareas = tareas.length;
+  totalTareas = tareas.length; //en cada accion como agregar una lista o borrar un elemento se actualiza el total de tareas y realizadas
 
   datosTareas.innerHTML = `
       <p>Total: ${totalTareas}</p>
@@ -50,6 +59,8 @@ if(tareas[index].estado == true){
   renderTareas();
 }
 
+
+//funcion para actualizar el estado de la tarea si se realizó o no
 function actualizaEstado(id) {
   const index = tareas.findIndex((ele) => ele.id == id);
   tarea = tareas[index];
@@ -69,7 +80,7 @@ function actualizaEstado(id) {
 }
 
 
-
+//función carga el inicio con los elementos necesarios
 function inicio (){
    
     totalTareas = tareas.length;
