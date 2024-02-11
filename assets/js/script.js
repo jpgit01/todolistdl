@@ -3,7 +3,8 @@ let btnAgregaTarea = document.querySelector("#btn_agrega_tarea");
 let listaTareas = document.querySelector("#lista_tareas");
 let datosTareas = document.querySelector("#datos");
 
-const tareas = [];
+const tareas = [{ id: 1, nombre: 'Estudiar', estado: false },{ id: 2, nombre: 'ejercicio', estado: false },{ id: 3, nombre: 'clase', estado: false }];
+let contador = 0;
 
 function renderTareas() {
   let html = "";
@@ -27,7 +28,8 @@ btnAgregaTarea.addEventListener("click", () => {
   tareaInput.value = "";
   totalTareas = tareas.length;
   datosTareas.innerHTML = `
-      <p>Total: ${totalTareas}</p>`;
+      <p>Total: ${totalTareas}</p>
+      <p>Realizadas: ${contador}</p>`;
   renderTareas();
 });
 
@@ -36,13 +38,46 @@ function borrar(id) {
   tareas.splice(index, 1);
   totalTareas = tareas.length;
   datosTareas.innerHTML = `
-      <p>Total: ${totalTareas}</p>`;
+      <p>Total: ${totalTareas}</p>
+      <p>Realizadas: ${contador}</p>`;
   renderTareas();
 }
 
 function actualizaEstado(id) {
   const index = tareas.findIndex((ele) => ele.id == id);
   tarea = tareas[index];
+
+  if (!tarea.estado) {
+    contador++; // Incrementa el contador
+  }
+
   tarea.estado = true;
+
+  totalTareas = tareas.length;
+  datosTareas.innerHTML = `
+      <p>Total: ${totalTareas}</p>
+      <p>Realizadas: ${contador}</p>`;
+      
   renderTareas();
 }
+
+
+
+    tareas.forEach(tarea => {
+        if (tarea.estado) {
+            contador++;
+        }
+    });
+
+
+function inicio (){
+   
+    totalTareas = tareas.length;
+    datosTareas.innerHTML = `
+        <p>Total: ${totalTareas}</p>
+        <p>Realizadas: ${contador}</p>
+        `;
+        renderTareas();
+}
+
+window.onload = inicio()
