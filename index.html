@@ -11,29 +11,29 @@
     />
     <title>Todo list</title>
   </head>
-  <body>
-    <div class="container bg-dark text-white p-3">
+  <body class="bg-dark text-white">
+    <div class="container text-white p-3">
       <div class="row">
         <div class="col-md-12 text-center">
           <h1>Calendario de tareas</h1>
         </div>
-        <div class="col-md-12">
-          <div class="input-group pt-5 pb-5">
-            <input
-              type="text"
-              class="form-control"
-              id="input_tarea"
-              aria-describedby="inputGroupFileAddon04"
-              aria-label="Ej: estudiar"
-            />
-            <button class="btn btn-primary" type="button" id="btn_agrega_tarea">
+        <div class="col-md-12 pt-5 pb-5">
+          <textarea
+            type="text"
+            class="form-control"
+            id="input_tarea"
+            aria-describedby="inputGroupFileAddon04"
+            aria-label="Ej: estudiar"
+          ></textarea>
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary mt-1" type="button" id="btn_agrega_tarea">
               Agregar Tarea
             </button>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6" id="datos"></div>
-          <div class="col-md-6 text-center" id="lista_tareas"></div>
+          <div class="col-md-2" id="datos"></div>
+          <div class="col-md-10 text-center" id="lista_tareas"></div>
         </div>
       </div>
     </div>

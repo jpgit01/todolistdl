@@ -13,9 +13,9 @@ function renderTareas() {
 
   for (tarea of tareas) {
     if (tarea.estado == false) {
-      html += `<tr><td><button id="bot-rar" class='btn btn-danger' onclick="borrar(${tarea.id})"> eliminar</button></td><td><button class='btn btn-success'         onclick="actualizaEstado(${tarea.id})">Realizada</button></td><td>${tarea.id}</td><td>${tarea.nombre}</td></tr>`;
+      html += `<tr><td><button id="bot-rar" class='btn btn-danger btn-lg' onclick="borrar(${tarea.id})"> eliminar</button></td><td><button class='btn btn-success btn-lg'onclick="actualizaEstado(${tarea.id})">Realizada</button></td><td>${tarea.id}</td><td>${tarea.nombre}</td></tr>`;
     } else {
-      html += `<tr><td><button id="bot-rar"  class="btn btn-danger "onclick="borrar(${tarea.id})"> eliminar</button></td><td><div class="alert alert-success" role="alert">Tarea Realizada</div></td><td>${tarea.id}</td><td>${tarea.nombre}</td></tr>`;
+      html += `<tr><td><button id="bot-rar"  class="btn btn-danger btn-lg"onclick="borrar(${tarea.id})"> eliminar</button></td><td><div class="alert alert-success" role="alert">Tarea Realizada</div></td><td>${tarea.id}</td><td>${tarea.nombre}</td></tr>`;
     }
   }
 
