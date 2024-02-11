@@ -35,8 +35,15 @@ btnAgregaTarea.addEventListener("click", () => {
 
 function borrar(id) {
   const index = tareas.findIndex((ele) => ele.id == id);
+
+if(tareas[index].estado == true){
+    contador--
+}
+
   tareas.splice(index, 1);
+
   totalTareas = tareas.length;
+
   datosTareas.innerHTML = `
       <p>Total: ${totalTareas}</p>
       <p>Realizadas: ${contador}</p>`;
@@ -48,7 +55,7 @@ function actualizaEstado(id) {
   tarea = tareas[index];
 
   if (!tarea.estado) {
-    contador++; // Incrementa el contador
+    contador++;
   }
 
   tarea.estado = true;
@@ -61,13 +68,6 @@ function actualizaEstado(id) {
   renderTareas();
 }
 
-
-
-    tareas.forEach(tarea => {
-        if (tarea.estado) {
-            contador++;
-        }
-    });
 
 
 function inicio (){
